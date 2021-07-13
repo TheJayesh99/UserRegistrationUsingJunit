@@ -2,53 +2,84 @@ package UserRegistrationJunit;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 public class UserRegistrationTest 
 {
+	UserRegistrationService validator = new UserRegistrationService();
 	//checking conditions for first name
 	@Test
-	public void givenFirstName_WhenProper_ShouldReturnValid() 
+	public void givenFirstName_WhenProper_ShouldReturnTrue() 
 	{
-		UserRegistrationService firstNamevalidator = new UserRegistrationService();
-		assertTrue(firstNamevalidator.checkFirstName("Abcd"));			
+		assertTrue(validator.checkFirstName("Abcd"));			
 	}
 
 	@Test
-	public void givenFirstName_WhenShort_ShouldReturnValid() 
+	public void givenFirstName_WhenShort_ShouldReturnFalse() 
 	{
-		UserRegistrationService firstNamevalidator = new UserRegistrationService();
-		assertFalse(firstNamevalidator.checkFirstName("Ab"));			
+		assertFalse(validator.checkFirstName("Ab"));			
 	}
 
 	@Test
-	public void givenFirstName_WhenFirstNotInUpperCase_ShouldReturnValid() 
+	public void givenFirstName_WhenFirstNotInUpperCase_ShouldReturnFalse() 
 	{
-		UserRegistrationService firstNamevalidator = new UserRegistrationService();
-		assertFalse(firstNamevalidator.checkFirstName("abcd"));			
+		assertFalse(validator.checkFirstName("abcd"));			
 	}
 
 	//checking conditions for last name
 	@Test
-	public void givenLastName_WhenProper_ShouldReturnValid() 
+	public void givenLastName_WhenProper_ShouldReturnTrue() 
 	{
-		UserRegistrationService lastNamevalidator = new UserRegistrationService();
-		assertTrue(lastNamevalidator.checkLastName("Abcd"));			
+		assertTrue(validator.checkLastName("Abcd"));			
 	}
 	
 	@Test
-	public void givenLastName_WhenShort_ShouldReturnValid() 
+	public void givenLastName_WhenShort_ShouldReturnFalse() 
 	{
-		UserRegistrationService lastNamevalidator = new UserRegistrationService();
-		assertFalse(lastNamevalidator.checkLastName("Ab"));			
+		assertFalse(validator.checkLastName("Ab"));			
 	}
 	
 	@Test
-	public void givenLastName_WhenFirstNotInUpperCase_ShouldReturnValid() 
+	public void givenLastName_WhenFirstNotInUpperCase_ShouldReturnFalse() 
 	{
-		UserRegistrationService lastNamevalidator = new UserRegistrationService();
-		assertFalse(lastNamevalidator.checkLastName("abcd"));			
+		assertFalse(validator.checkLastName("abcd"));			
+	}
+	
+	//checking conditions for email
+	@Test
+	public void givenEmail_WhenProper_ShouldReturnTrue()
+	{
+		assertTrue(validator.checkEmailAddress("abc.xyz@bridgelabz.co.in"));
 	}
 
+	@Test
+	public void givenEmail_WithoutUserName_ShouldReturnFalse()
+	{
+		assertFalse(validator.checkEmailAddress("@bridgelabz.co.in"));
+	}
+
+	@Test
+	public void givenEmail_WithoutDomainName_ShouldReturnFalse()
+	{
+		assertFalse(validator.checkEmailAddress("abc.xyzco.in"));
+	}
+	
+	@Test
+	public void givenEmail_WithoutDomain_ShouldReturnFalse()
+	{
+		assertFalse(validator.checkEmailAddress("abc.xyz@bridgelabz"));
+	}
+
+	@Test
+	public void givenEmail_WithoutOptinalUserName_ShouldReturnTrue()
+	{
+		assertTrue(validator.checkEmailAddress("abc@bridgelabz.co.in"));
+	}
+
+	@Test
+	public void givenEmail_WithoutOptinalDomain_ShouldReturnTrue()
+	{
+		assertTrue(validator.checkEmailAddress("abc.xyz@bridgelabz.com"));
+	}
+	
 }
