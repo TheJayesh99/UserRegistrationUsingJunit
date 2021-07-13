@@ -1,4 +1,4 @@
-package UserRegistrationJunit;
+package com.bridgelabz.userregistrationtesting;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,6 +8,8 @@ import java.util.Collection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import com.bridgelabz.userregistration.UserRegistrationService;
 
 @RunWith(Parameterized.class)
 public class EmailValidationTest 

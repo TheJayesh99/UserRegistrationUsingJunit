@@ -1,4 +1,4 @@
-package UserRegistrationJunit;
+package com.bridgelabz.userregistration;
 
 import java.util.Scanner;
 

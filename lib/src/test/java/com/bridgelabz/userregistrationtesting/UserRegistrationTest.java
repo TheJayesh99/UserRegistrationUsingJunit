@@ -1,8 +1,10 @@
-package UserRegistrationJunit;
+package com.bridgelabz.userregistrationtesting;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+
+import com.bridgelabz.userregistration.UserRegistrationService;
 
 public class UserRegistrationTest 
 {
