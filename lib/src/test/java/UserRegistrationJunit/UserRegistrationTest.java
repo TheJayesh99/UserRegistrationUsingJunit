@@ -82,4 +82,41 @@ public class UserRegistrationTest
 		assertTrue(validator.checkEmailAddress("abc.xyz@bridgelabz.com"));
 	}
 	
+	//test cases to Check Password
+	@Test
+	public void givenPassword_WhenProper_ShouldReturnTrue()
+	{
+		assertTrue(validator.checkPassword("Abacd@12"));
+	}
+
+	@Test
+	public void givenPassword_WhenShort_ShouldReturnFalse()
+	{
+		assertFalse(validator.checkPassword("Ab@12"));
+	}
+
+	@Test
+	public void givenPassword_WithoutUpperCase_ShouldReturnFalse()
+	{
+		assertFalse(validator.checkPassword("abacd@12"));
+	}
+
+	@Test
+	public void givenPassword_WithoutLowerCase_ShouldReturnFalse()
+	{
+		assertFalse(validator.checkPassword("ABACD@12"));
+	}
+
+	@Test
+	public void givenPassword_WithoutNumeric_ShouldReturnFalse()
+	{
+		assertFalse(validator.checkPassword("Abacd@aa"));
+	}
+
+	@Test
+	public void givenPassword_WithoutSpecailCharacter_ShouldReturnFalse()
+	{
+		assertFalse(validator.checkPassword("Abacds12"));
+	}
+	
 }
